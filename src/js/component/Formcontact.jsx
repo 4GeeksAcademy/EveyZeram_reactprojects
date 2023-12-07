@@ -7,7 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 // 1º Importar hook useCOntext
 // 2º Importar Context de js
 // 3º Dentro de (este) componente desestructurar store y actions 
-// desde el hook (Contex)
+// desde el hook siempre (Contex)
 
 
 export const Formcontact = () => {
