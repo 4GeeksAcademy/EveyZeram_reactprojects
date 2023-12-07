@@ -13,7 +13,7 @@ export const Contactlist = () => {
       <nav className="navbar navbar-light bg-light mb-3 p-2">
         <Link to="/"><span className="navbar-brand mb-0 h1">Home</span></Link>
         {/* Botón para crear un contacto que nos lleva alformulario */}
-        <Link to="/contacts">
+        <Link to="/form-contact">
           <button className="btn btn-warning">Create a New Contact</button>
         </Link>
       </nav>
