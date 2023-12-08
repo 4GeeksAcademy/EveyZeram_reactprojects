@@ -30,15 +30,16 @@ export const Updateform = () => {
         navigate('/contact-list');
     };
 
-    const handlecreateUsers = () => {
-        const newUser = {
+    const handleupdateUsers = () => {
+        const updatedContactData = {
             full_name: name,
             address: address,
             phone: phone,
             email: email,
             agenda_slug: 'evey_agenda'
         };
-        actions.createUsers(newUser);
+        console.log('Updating contact with data:', updatedContactData);
+        actions.updateUsers(updatedContactData);
     };
 
     // expresión de JS entre {}
@@ -64,7 +65,7 @@ export const Updateform = () => {
                             <Form.Label>Address</Form.Label >
                             <Form.Control placeholder="Enter address" onChange={(e) => setAddress(e.target.value)} value={address} />
                             <div className="d-grid gap-2 d-flex justify-content-center">
-                                <Button className="my-2" variant="success" type="submit" onClick={handlecreateUsers}  >Save</Button>
+                                <Button className="my-2" variant="success" type="submit" onClick={handleupdateUsers}  >Save</Button>
                                 <Button className="my-2" variant="warning" type="reset">Reset</Button>
                             </div>
                             <div>

@@ -109,20 +109,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			// EDITAR UN USUARIO
-			updateUsers: async () => {
+			updateUsers: async (updatedContactData) => {
+				const contactId = getStore().currentContact.id;
+				console.log('Updated contact data:', updatedContactData);
 				// 1. Definir la URL
-				const url = "https://playground.4geeks.com/apis/fake/contact/agenda/evey_agenda";
+				const url = `https://playground.4geeks.com/apis/fake/contact/${contactId}`;
 				// 2. Options
 				const options = {
-					method: 'PUT'
+					method: 'PUT',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(updatedContactData),
 				};
+
 				// 3. Response
 				const response = await fetch(url, options);
+				console.log('PUT Response:', response);
 				// 4. Verificar response (console log)
 				if (response.ok) {
 					// 5. If = ok; Tratamiento del OK - definimos el data
 					const data = await response.json();
-					setStore({ "currentContact": data })
+					setStore({ "currentContact": data });
+					getActions().getUsers();
 					localStorage.setItem('usersLocal', data);// se usa para meter el contenido de data en users. 
 					console.log(data) // para ver qué trae
 				} else {
