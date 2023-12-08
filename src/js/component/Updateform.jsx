@@ -18,10 +18,10 @@ export const Updateform = () => {
     // si haces un console.log(store.cohorte) debería salir el dato de flux
     // console.log(store.agenda);
     // Tenemos que añadir los useState de cada campo, para poder usarlos y modificarlos
-    const [name, setName] = useState(''); // Hay que modifcarlo con currentContact.
-    const [address, setAddress] = useState(''); // 
-    const [phone, setPhone] = useState(''); // 
-    const [email, setEmail] = useState('');
+    const [name, setName] = useState(currentContact.full_name); // Hay que modifcarlo con currentContact.
+    const [address, setAddress] = useState(currentContact.address); // 
+    const [phone, setPhone] = useState(currentContact.phone); // 
+    const [email, setEmail] = useState(currentContact.email);
 
     const handleSubmit = (event) => {
         event.preventDefault();

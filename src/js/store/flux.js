@@ -10,32 +10,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 			myArray: [],
 			myObjeto: {},
 			agenda: [],
-			currentContact: {}, // duda ?¿ 
-			people: []
+			currentContact: {}, // Para poder editar contacto (updateform)
+			people: {}
 
 		},
 		actions: {
+			currentContact: ((contact) => setStore({currentContact: contact}))
 			// Use getActions to call a function within a fuction (funciones globales que se pueden usar en cualquier componente)
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			// changeColor: (index, color) => {
-			// 	//get the store
-			// 	const store = getStore();
-			// 	//we have to loop the entire demo array to look for the respective index
-			// 	//and change its color
-			// 	const demo = store.demo.map((elm, i) => {
-			// 		if (i === index) elm.background = color;
-			// 		return elm;
-			// 	});
-			// 	//reset the global store
-			// 	setStore({ demo: demo });
+			// exampleFunction: () => {
+				
+			// 	getActions().changeColor(0, "green");
 			// },
+			// loadSomeData: () => {
+			// 	/**
+			// 		fetch().then().then(data => setStore({ "foo": data.bar }))
+			// 	*/
+			},
+			changeColor: (index, color) => {
+				//get the store
+				const store = getStore();
+				//we have to loop the entire demo array to look for the respective index
+				//and change its color
+				const demo = store.demo.map((elm, i) => {
+					if (i === index) elm.background = color;
+					return elm;
+				});
+				//reset the global store
+				setStore({ demo: demo });
+			},
+// CONTACT LIST
 			getUsers: async () => {
 				// 1. Definir la URL
 				const url = "https://playground.4geeks.com/apis/fake/contact/agenda/evey_agenda";
@@ -50,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// 5. If = ok; Tratamiento del OK - definimos el data
 					const data = await response.json();
 					setStore({ "agenda": data })
-					localStorage.setItem('usersLocal', data);// se usa para meter el contenido de data en agenda. 
+					localStorage.setItem('usersLocal', JSON.stringify(data));// se usa para meter el contenido de data en agenda. 
 					console.log(data) // para ver qué trae
 				} else {
 					console.log('Error:', response.status, response.statusText)
@@ -61,14 +64,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// AÑADIR UN USUARIO
 			createUsers: async (newUser) => { //definimos newUser
 				// 1. Definir la URL
-				const url = "https://playground.4geeks.com/apis/fake/contact/agenda/evey_agenda";
+				const url = "https://playground.4geeks.com/apis/fake/contact";
 				// 2. Options
 				const options = {
 					method: 'POST',
 					headers: {
 						'Content-type': 'application/json'
 					},
-					body: JSON.stringify([newUser])
+					body: JSON.stringify(newUser)
 				};
 				// 3. Response
 				const response = await fetch(url, options);
@@ -89,12 +92,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			// BORAR UN USUARIO
 			deleteUsers: async (id) => {
-				const url = "https://playground.4geeks.com/apis/fake/contact/agenda/evey_agenda";
+				const urlBase = 'https://playground.4geeks.com/apis/fake/contact/';
+				const url = urlBase + id;
 				const options = {
 					method: 'DELETE',
-					headers: {
-						'Content-type': 'application/json'
-					}
+					// headers: {
+					// 	'Content-type': 'application/json'
+					// }
 				};
 				const response = await fetch(url, options);
 				if (response.ok) {
@@ -131,25 +135,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 ///////////////////////STAR WARS/////////////////
-getPeople: async () => {
-	const url = "https://www.swapi.tech/api/people";
-	const options = {
-		method: 'GET'
-	};
-	const response = await fetch(url, options);
-	if (response.ok) {
-		const data = await response.json();
-		setStore({ "people": data })
-		localStorage.setItem('usersLocal', data);
-		console.log(data) 
-	} else {
-		console.log('Error:', response.status, response.statusText)
-	}
+// getPeople: async () => {
+// 	const url = "https://www.swapi.tech/api/people";
+// 	const options = {
+// 		method: 'GET'
+// 	};
+// 	const response = await fetch(url, options);
+// 	if (response.ok) {
+// 		const data = await response.json();
+// 		setStore({ "people": data })
+// 		localStorage.setItem('usersLocal', data);
+// 		console.log(data) 
+// 	} else {
+// 		console.log('Error:', response.status, response.statusText)
+// 	}
 
-},
+// },
 			
 		}
 	};
-};
+
 
 export default getState;

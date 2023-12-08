@@ -32,7 +32,7 @@ export const Carduser = () => {
                                     <div className='ms-auto'>
                                         <FontAwesomeIcon icon={faTrash} className="m-1 mx-4"  onClick={() => handleDeleteUser(item.id)} />
                                         <Link to="/update-form">
-                                        <FontAwesomeIcon icon={faPencilAlt} className="m-1" onClick={() => actions.updateUsers(item)} />
+                                        <FontAwesomeIcon icon={faPencilAlt} className="m-1" onClick={() => actions.currentContact(item)} />
                                         </Link>
                                     </div>
                                 </div>
