@@ -52,17 +52,17 @@ export const Updateform = () => {
             </nav>
             <div className="p-4 col-6 m-auto">
                 <h2 className="text-center"><strong>Edit The Contact Here</strong></h2>
-                { !store.currentContact ? <Spinner/> :
+                {!store.currentContact ? <Spinner /> :
                     <Form className="text-start" onSubmit={handleSubmit}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Full Name</Form.Label>
-                            <Form.Control placeholder="Full Name" onChange={(e) => setName(e.target.value)} />
+                            <Form.Control placeholder="Full Name" onChange={(e) => setName(e.target.value)} value={name} />
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+                            <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} value={email}/>
                             <Form.Label>Phone</Form.Label>
-                            <Form.Control placeholder="Enter Phone" onChange={(e) => setPhone(e.target.value)} />
+                            <Form.Control placeholder="Enter Phone" onChange={(e) => setPhone(e.target.value)} value={phone} />
                             <Form.Label>Address</Form.Label >
-                            <Form.Control placeholder="Enter address" onChange={(e) => setAddress(e.target.value)} />
+                            <Form.Control placeholder="Enter address" onChange={(e) => setAddress(e.target.value)} value={address} />
                             <div className="d-grid gap-2 d-flex justify-content-center">
                                 <Button className="my-2" variant="success" type="submit" onClick={handlecreateUsers}  >Save</Button>
                                 <Button className="my-2" variant="warning" type="reset">Reset</Button>

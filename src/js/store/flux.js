@@ -122,7 +122,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (response.ok) {
 					// 5. If = ok; Tratamiento del OK - definimos el data
 					const data = await response.json();
-					setStore({ "agenda": data })
+					setStore({ "currentContact": data })
 					localStorage.setItem('usersLocal', data);// se usa para meter el contenido de data en users. 
 					console.log(data) // para ver qué trae
 				} else {
