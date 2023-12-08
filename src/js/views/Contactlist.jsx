@@ -18,7 +18,7 @@ export const Contactlist = () => {
         </Link>
       </nav>
       <div className="container display-flex m-auto">
-        <h3>Contact List</h3>
+        <h3>Friends List</h3>
         <Carduser/>
       </div>
     </div>

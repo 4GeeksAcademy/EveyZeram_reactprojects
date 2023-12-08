@@ -3,6 +3,7 @@ import React, { useContext, useState } from 'react';
 import { Context } from '../store/appContext.js';
 import Form from 'react-bootstrap/Form';
 import { Link, useNavigate } from "react-router-dom";
+import { Spinner } from '../component/Spinner.jsx';
 // para utilizar store de flux 
 // 1º Importar hook useCOntext
 // 2º Importar Context de js
@@ -14,14 +15,15 @@ export const Updateform = () => {
     // Antes del return, debemos establecer 
     const { store, actions } = useContext(Context)
     const navigate = useNavigate();
-    const updateUsers = store.currentContact;
+    const currentContact = store.currentContact;
+    console.log(currentContact);
     // si haces un console.log(store.cohorte) debería salir el dato de flux
     // console.log(store.agenda);
     // Tenemos que añadir los useState de cada campo, para poder usarlos y modificarlos
-    const [name, setName] = useState(currentContact.full_name); // Hay que modifcarlo con currentContact.
-    const [address, setAddress] = useState(currentContact.address); // 
-    const [phone, setPhone] = useState(currentContact.phone); // 
-    const [email, setEmail] = useState(currentContact.email);
+    const [name, setName] = useState(store.currentContact.full_name); // Si existe el contacto entonces traes los valores que tiene currentContact
+    const [address, setAddress] = useState(store.currentContact.address); // 
+    const [phone, setPhone] = useState(store.currentContact.phone); // 
+    const [email, setEmail] = useState(store.currentContact.email);
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -49,26 +51,28 @@ export const Updateform = () => {
                 </Link>
             </nav>
             <div className="p-4 col-6 m-auto">
-                <h2 className="text-center"><strong>Add a new contact</strong></h2>
-                <Form className="text-start" onSubmit={handleSubmit}>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Full Name</Form.Label>
-                        <Form.Control placeholder="Full Name" onChange={(e) => setName(e.target.value)}/>
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
-                        <Form.Label>Phone</Form.Label>
-                        <Form.Control placeholder="Enter Phone" onChange={(e) => setPhone(e.target.value)}/>
-                        <Form.Label>Address</Form.Label >
-                        <Form.Control placeholder="Enter address" onChange={(e) => setAddress(e.target.value)}/>
-                        <div className="d-grid gap-2 d-flex justify-content-center">
-                            <Button className="my-2" variant="success" type="submit" onClick={handlecreateUsers}  >Save</Button>
-                            <Button className="my-2" variant="warning" type="reset">Reset</Button>
-                        </div>
-                        <div>
-                            <Link to="/contact-list">or get back to contacts</Link>
-                        </div>
-                    </Form.Group>
-                </Form>
+                <h2 className="text-center"><strong>Edit The Contact Here</strong></h2>
+                { !store.currentContact ? <Spinner/> :
+                    <Form className="text-start" onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Full Name</Form.Label>
+                            <Form.Control placeholder="Full Name" onChange={(e) => setName(e.target.value)} />
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)} />
+                            <Form.Label>Phone</Form.Label>
+                            <Form.Control placeholder="Enter Phone" onChange={(e) => setPhone(e.target.value)} />
+                            <Form.Label>Address</Form.Label >
+                            <Form.Control placeholder="Enter address" onChange={(e) => setAddress(e.target.value)} />
+                            <div className="d-grid gap-2 d-flex justify-content-center">
+                                <Button className="my-2" variant="success" type="submit" onClick={handlecreateUsers}  >Save</Button>
+                                <Button className="my-2" variant="warning" type="reset">Reset</Button>
+                            </div>
+                            <div>
+                                <Link to="/contact-list">or get back to contacts</Link>
+                            </div>
+                        </Form.Group>
+                    </Form>
+                }
             </div>
         </div>
     );

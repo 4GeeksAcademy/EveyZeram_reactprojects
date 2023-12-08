@@ -2,6 +2,11 @@
     General Styles
 */
 
-.bg-black {
-    background-color: black;
+/* Todo List: ocultar trash */
+.hidden-icon > span {
+    visibility: hidden;
+}
+
+.hidden-icon:hover > span {
+    visibility: visible;
 }

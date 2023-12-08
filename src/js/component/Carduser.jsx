@@ -30,7 +30,7 @@ export const Carduser = () => {
                                 <div className="m-3 d-flex">
                                     <div><h5>{item.full_name}</h5></div>
                                     <div className='ms-auto'>
-                                        <FontAwesomeIcon icon={faTrash} className="m-1 mx-4"  onClick={() => handleDeleteUser(item.id)} />
+                                        <FontAwesomeIcon icon={faTrash} className="m-1 mx-4" onClick={() => handleDeleteUser(item.id)} />
                                         <Link to="/update-form">
                                         <FontAwesomeIcon icon={faPencilAlt} className="m-1" onClick={() => actions.currentContact(item)} />
                                         </Link>

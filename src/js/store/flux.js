@@ -10,21 +10,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 			myArray: [],
 			myObjeto: {},
 			agenda: [],
-			currentContact: {}, // Para poder editar contacto (updateform)
-			people: {}
-
+			currentContact: {} // Para poder editar contacto (updateform)
 		},
 		actions: {
-			currentContact: ((contact) => setStore({currentContact: contact}))
+			currentContact: ((contact) => setStore({ currentContact: contact })),
 			// Use getActions to call a function within a fuction (funciones globales que se pueden usar en cualquier componente)
-			// exampleFunction: () => {
-				
-			// 	getActions().changeColor(0, "green");
-			// },
-			// loadSomeData: () => {
-			// 	/**
-			// 		fetch().then().then(data => setStore({ "foo": data.bar }))
-			// 	*/
+			exampleFunction: () => {
+
+				getActions().changeColor(0, "green");
+			},
+			loadSomeData: () => {
+				// 	/**
+				// 		fetch().then().then(data => setStore({ "foo": data.bar }))
+				// 	*/
 			},
 			changeColor: (index, color) => {
 				//get the store
@@ -38,7 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-// CONTACT LIST
+			// CONTACT LIST
 			getUsers: async () => {
 				// 1. Definir la URL
 				const url = "https://playground.4geeks.com/apis/fake/contact/agenda/evey_agenda";
@@ -133,27 +131,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// 6. If Not - Tratamiento del ERROR
 				// es un atributo de la respuesta en HTML or eso {} 
 			},
-
-///////////////////////STAR WARS/////////////////
-// getPeople: async () => {
-// 	const url = "https://www.swapi.tech/api/people";
-// 	const options = {
-// 		method: 'GET'
-// 	};
-// 	const response = await fetch(url, options);
-// 	if (response.ok) {
-// 		const data = await response.json();
-// 		setStore({ "people": data })
-// 		localStorage.setItem('usersLocal', data);
-// 		console.log(data) 
-// 	} else {
-// 		console.log('Error:', response.status, response.statusText)
-// 	}
-
-// },
-			
-		}
-	};
-
-
-export default getState;
+		},
+	}
+}
+			export default getState;

@@ -36,7 +36,9 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
-			state.actions.getUsers(); // me traigo la función para poder usarla en nuestar app(?)
+			state.actions.getUsers(); 
+			// me traigo la función para poder usarla en nuestar app(?)
+			// state.actions.getPeople();
 		}, []);
 
 		
