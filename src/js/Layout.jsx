@@ -1,20 +1,16 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/ScrollToTop.js";
-// Import VIEWS
 import { Home } from "./views/Home.jsx";
-import { Demo } from "./views/Demo.jsx";
-import { Single } from "./views/single.js";
-// 
 import injectContext from "./store/appContext.js";
-// Import components
-// import { Navbar } from "./component/Navbar.jsx";
 import { Footer } from "./component/Footer.jsx";
-import { Contact } from "./views/Contacts.jsx";
-import { Contactlist } from "./views/Contactlist.jsx";
-import {Todolist} from "./views/Todolist.jsx"
 import { File404 } from "./views/File404.jsx";
-import { Carduser } from "./component/Carduser.jsx";
+import { Starwarshome } from "./views/Starwarshome.jsx";
+import { CardSW } from "./component/CardSW.jsx";
+import { Characters } from "./views/Characters.jsx";
+import { Planets } from "./views/Planets.jsx";
+import { Starships } from "./views/Starships.jsx";
+
 
 //create your first component
 const Layout = () => {
@@ -28,14 +24,13 @@ const Layout = () => {
 				<ScrollToTop>
 					{/* <Navbar /> */}
 					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/demo" element={<Demo />} />
-						<Route path="/single/:theid" element={<Single />} />
-						<Route path="/contacts" element={<Contact />} />
-						<Route path="/contact-list" element={<Contactlist />} />
-						<Route path="/carduser" element={<Carduser />} />
-						<Route path="/todolist" element={<Todolist />} />
+						<Route path="/" element={<Starwarshome />} />
 						<Route path="*" element={<File404/>}/>
+						<Route path="/starwars-home" element={<Starwarshome />} />
+						<Route path="/cardsw" element={<CardSW />} />
+						<Route path="/characters" element={<Characters />} />
+						<Route path="/planets" element={<Planets />} />
+						<Route path="/starships" element={<Starships />} />
 					</Routes>
 					<Footer />
 				</ScrollToTop>
