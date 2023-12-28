@@ -26,7 +26,12 @@ const injectContext = PassedComponent => {
 		);
 		// dentro del useEffect pondremos todas las funciones que se ejecuten cuando nuestra app se inicie (similar al onload)
 		useEffect(() => {
-			state.actions.getCharacters(); // me traigo la función para poder usarla en nuestar app(?)
+			state.actions.getCharacters();
+			state.actions.getPlanets(); 
+			state.actions.getStarships();// me traigo la función para poder usarla en nuestar app(?)
+			state.actions.getCharactersDetail();
+			state.actions.getPlanetsDetail();
+			state.actions.getStarshipDetail();
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,

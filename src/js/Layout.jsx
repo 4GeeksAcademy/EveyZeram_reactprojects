@@ -8,7 +8,9 @@ import { Starwarshome } from "./views/Starwarshome.jsx";
 import { Characters } from "./views/Characters.jsx";
 import { Planets } from "./views/Planets.jsx";
 import { Starships } from "./views/Starships.jsx";
-import {Detailscard} from "./component/Detailscard.jsx"
+import { Detailscard } from "./component/Detailscard.jsx"
+import { DetailscardPlanet } from "./component/DetailscardPlanet.jsx";
+import { DetailscardStarship } from "./component/DetailscardStarship.jsx";
 
 //create your first component
 const Layout = () => {
@@ -23,14 +25,14 @@ const Layout = () => {
 					{/* <Navbar /> */}
 					<Routes>
 						<Route path="/" element={<Starwarshome />} />
-						<Route path="*" element={<File404/>}/>
+						<Route path="*" element={<File404 />} />
 						<Route path="/starwars-home" element={<Starwarshome />} />
 						<Route path="/characters/:idCharacter" element={<Detailscard />} />
 						<Route path="/characters" element={<Characters />} />
 						<Route path="/planets" element={<Planets />} />
-						{/* <Route path="/planets:idPlanets" element={<Planets />} /> */}
-						{/* <Route path="/starships" element={<Starships />} /> */}
-						{/* <Route path="/starships:idStarships" element={<Starships />} /> */}
+						<Route path="/planets:idPlanets" element={<DetailscardPlanet />} />
+						<Route path="/starships" element={<Starships />} />
+						<Route path="/starships:idStarships" element={<DetailscardStarship />} />
 					</Routes>
 					<Footer />
 				</ScrollToTop>

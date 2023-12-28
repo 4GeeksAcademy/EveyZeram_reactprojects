@@ -8,7 +8,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			characters: [],
 			planets: [],
 			starships: [],
-			detailCharacter: {}
+			detailCharacter: {},
+			detailPlanet: {},
+			detailStarship: {}
 		},
 		actions: {
 			// Use getActions to call a function within a fuction (funciones globales que se pueden usar en cualquier componente)
@@ -94,20 +96,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// 6. If Not - Tratamiento del ERROR
 				// es un atributo de la respuesta en HTML or eso {} 
 			},
+
 			getStarships: async () => {
+				// 1. Definir la URL
 				const url = 'https://www.swapi.tech/api/starships';
+				// 2. Options
 				const options = {
 					method: 'GET'
 				};
+				// 3. Response
 				const response = await fetch(url, options);
+				// 4. Verificar response (console log)
 				if (response.ok) {
+					// 5. If = ok; Tratamiento del OK - definimos el data
 					const data = await response.json();
+					// Grabar los datos en el store y en local Storage
 					setStore({ "starships": data.results })
 					console.log(data),
 						console.log(data.results) // para ver qué trae
 				} else {
 					console.log('Error:', response.status, response.statusText)
 				}
+				// 6. If Not - Tratamiento del ERROR
+				// es un atributo de la respuesta en HTML or eso {} 
 			},
 
 			getCharactersDetail: async (id) => {
@@ -118,6 +129,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (response.ok) {
 					const data = await response.json();
 					setStore({ detailCharacter: data.result });
+				} else {
+					console.log('Error:', response.status, response.statusText);
+				}
+			},
+
+			getPlanetsDetail: async (id) => {
+				const url = `https://www.swapi.tech/api/planets/${id}`;
+				const options = { method: 'GET' };
+				const response = await fetch(url, options);
+				
+				if (response.ok) {
+					const data = await response.json();
+					setStore({ detailPlanet: data.result });
+				} else {
+					console.log('Error:', response.status, response.statusText);
+				}
+			},
+
+			getStarshipDetail: async (id) => {
+				const url = `https://www.swapi.tech/api/starships/${id}`;
+				const options = { method: 'GET' };
+				const response = await fetch(url, options);
+				
+				if (response.ok) {
+					const data = await response.json();
+					setStore({ detailStarship: data.result });
 				} else {
 					console.log('Error:', response.status, response.statusText);
 				}

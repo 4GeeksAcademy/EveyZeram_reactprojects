@@ -19,13 +19,13 @@ export const Planets = () => {
                     {store.planets.map((item, index) => (
                         <div key={index} className="col">
                             <div className="card border-dark my-3 mx-2 text-bg-dark">
-                                <img src={`${imgUrl}${item.uid}.jpg`} className="card-img-top w-100 h-100" alt="..." />
+                            <img src={`${imgUrl}${item.uid}.jpg`} onError={(e) => { e.target.onerror = null; e.target.src = "https://user-images.githubusercontent.com/5948318/38711585-ef6a8970-3e9c-11e8-96c7-fc8a610cdde2.png"; }} className="card-img-top w-100 h-100" alt="Planet"/>
                                 <div className="card-body text-center bg-warning">
                                     <h5 className="card-title">{item.name}</h5>
                                     <div className="d-flex justify-content-between align-items-center">
-                                        <Link to={`/characters/${item.uid}`} className="btn btn-light">Details</Link>
+                                        <Link to={`/planets/${item.uid}`} className="btn btn-light">Details</Link>
                                         {store.favorites.some(favorite => favorite.name === item.name) ? null : (
-                                        <span onClick={() => actions.addFavorite({ name: item.name })} className="btn btn-outline-white m-1">
+                                        <span onClick={() => actions.addFavorite({ name: item.name})} className="btn btn-outline-white m-1">
                                         <FontAwesomeIcon icon={faJedi} />
                                             </span>
                                         )}
