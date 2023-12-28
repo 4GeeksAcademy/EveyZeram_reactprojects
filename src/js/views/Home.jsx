@@ -15,14 +15,7 @@ export const Home = () => {
 			<Navbar/>
 		<div className="text-center mt-5 p-2">
 			<h1>Welcome to my React Projects!</h1>
-		{/* <ul>
-			Proyectos Actuales
-		<li><Link to="/contact-list">Lista de contactos</Link></li>
-		<li><Link to="/contacts">Crear Contacto Formulario </Link></li>
-		
-		
-		</ul>
-		 */}
+
 		<p>
 						<img src={reactImage} />
 		</p>

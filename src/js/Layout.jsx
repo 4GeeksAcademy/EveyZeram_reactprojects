@@ -10,12 +10,15 @@ import injectContext from "./store/appContext.js";
 // Import components
 // import { Navbar } from "./component/Navbar.jsx";
 import { Footer } from "./component/Footer.jsx";
-import { Contact } from "./views/Contacts.jsx";
+import { Formcontact } from "./component/Formcontact.jsx";
 import { Contactlist } from "./views/Contactlist.jsx";
-import {Todolist} from "./views/Todolist.jsx"
+// import { Todolist } from "./views/Todolist.jsx"
 import { File404 } from "./views/File404.jsx";
 import { Carduser } from "./component/Carduser.jsx";
+import { Updateform } from "./component/Updateform.jsx"
 
+
+import { TodoListFetch } from "./views/TodolistFetch.jsx";
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -31,11 +34,12 @@ const Layout = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/single/:theid" element={<Single />} />
-						<Route path="/contacts" element={<Contact />} />
+						<Route path="/form-contact" element={<Formcontact />} />
 						<Route path="/contact-list" element={<Contactlist />} />
 						<Route path="/carduser" element={<Carduser />} />
-						<Route path="/todolist" element={<Todolist />} />
-						<Route path="*" element={<File404/>}/>
+						<Route path="/todolistfetch" element={<TodoListFetch />} />
+						<Route path="/update-form" element={<Updateform />} />
+						<Route path="*" element={<File404 />} />
 					</Routes>
 					<Footer />
 				</ScrollToTop>

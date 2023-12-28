@@ -24,8 +24,9 @@ const injectContext = PassedComponent => {
 					})
 			})
 		);
-// dentro del useEffect pondremos todas las funciones que se ejecuten cuando nuestra app se inicie (similar al onload)
+		// dentro del useEffect pondremos todas las funciones que se ejecuten cuando nuestra app se inicie (similar al onload)
 		useEffect(() => {
+			console.log("State:", state);
 			/**
 			 * EDIT THIS!
 			 * This function is the equivalent to "window.onLoad", it only runs once on the entire application lifetime
@@ -35,8 +36,12 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
-			state.actions.getUsers(); // me traigo la función para poder usarla en nuestar app(?)
+			state.actions.getUsers(); 
+			// me traigo la función para poder usarla en nuestar app(?)
+			// state.actions.getPeople();
 		}, []);
+
+		
 
 		// The initial value for the context is not null anymore, but the current state of this component,
 		// the context will now have a getStore, getActions and setStore functions available, because they were declared
